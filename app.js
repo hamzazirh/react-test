@@ -1,19 +1,4 @@
-import axios from "axios";
+import getData from "./getData.js";
 
-async function getData(userId) {
-
-    const { data: user } = await axios(`https://jsonplaceholder.typicode.com/users/${userId}`);
-    const { data: posts } = await axios(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`, {
-        params: {
-            _limit: 1
-        }
-    })
-
-    const newData = {
-        ...user,
-        posts
-    }
-    return newData;
-}
-
-export default getData;
+getData(1)
+    .then(data => console.log(data))
